@@ -17,17 +17,17 @@
             <span fxHide.lt-sm>{{'ASSESSMENT_SCALE' | translate}}</span>
           </div>
           <mat-slider style="width:100%" formControlName="scale" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
-            [tick-interval]="tickInterval" [(ngModel)]="scaleValue" [vertical]="vertical" (change)="triggerView($event)">
+             [(ngModel)]="scaleValue" [vertical]="vertical" required (change)="triggerView($event)">
           </mat-slider>
           <small *ngIf="foodform.controls['scale'].hasError('required') && foodform.controls['scale'].touched" class="mat-text-warn">{{'SCALE_ERROR1' | translate}}</small>
         </div>
 
         <div *ngIf="isSkillsView" fxLayout="column" class="pl-1 pr-1">
-            <div class="text-secondary pb-1">
-              {{'ASSESSMENT_SKILL' | translate}}
-            </div>
-            <mat-checkbox fxFlex="50%" *ngFor="let data of skills" (click)="onViewChange('motivations')" (change)="onChange(data.name, $event)">{{data.name | translate}}</mat-checkbox>
+          <div class="text-secondary pb-1">
+            {{'ASSESSMENT_SKILL' | translate}}
           </div>
+          <mat-checkbox fxFlex="50%" *ngFor="let data of skills" (click)="onViewChange('motivations')" (change)="onChange(data.name, $event)">{{data.name | translate}}</mat-checkbox>
+        </div>
 
         <div *ngIf="isMotivationsView" class="pt-1 pl-1 pr-1">
           <mat-form-field style="width:100%">

@@ -17,7 +17,7 @@
             <span fxHide.lt-sm>{{'ASSESSMENT_SCALE' | translate}}</span>
           </div>
           <mat-slider style="width:100%" formControlName="scale" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
-            [tick-interval]="tickInterval" [(ngModel)]="scaleValue" [vertical]="vertical" (change)="triggerView($event)">
+             [(ngModel)]="scaleValue" [vertical]="vertical" required (change)="triggerView($event)">
           </mat-slider>
           <small *ngIf="fashionform.controls['scale'].hasError('required') && fashionform.controls['scale'].touched" class="mat-text-warn">{{'SCALE_ERROR1' | translate}}</small>
         </div>
