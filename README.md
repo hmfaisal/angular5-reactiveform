@@ -43,7 +43,7 @@ XX I dont have much knowledge about drupal yet. Therefore I am skipping this que
 
 **c.** In Project **src->app->modules->applications->components->selection->selection.component.ts** is responsible for form field validation. In there against motivations formcontrol just change the desired min and max length value number in a minute. Currently set min length 10 characters and max length 200 characters.
 
-**d.**In Project **src->app->modules->applications->components->selection->selection.component.ts** has the form field formcontrol name. After Changing the formcontrol name in component one must also change the dependent formcontrolname in view which is in **src->app->modules->applications->components->selection->selection.component.html** in a couple of minute
+**d.** In Project **src->app->modules->applications->components->selection->selection.component.ts** has the form field formcontrol name. After Changing the formcontrol name in component one must also change the dependent formcontrolname in view which is in **src->app->modules->applications->components->selection->selection.component.html** in a couple of minute
 
 **e.** The frontend is fully modularized and contenttype is a independent component which is in **src->app->modules->applications**. At the time of project load I can put some guard against the component named "application". The guard can be activated from the project routing which is in **src->app->app-routing.module.ts**. If the frontend can communicate with backend without any problem and login mechanism in frontend is fully functional activating the guard and creating the guard module will take about 1 hour
 
