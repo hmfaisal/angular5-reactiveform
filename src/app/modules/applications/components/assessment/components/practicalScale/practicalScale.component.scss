@@ -1,0 +1,33 @@
+.img{
+    border-radius: 50%;
+    height:120px;
+    width:120px;
+    background: #fdcedd;
+    border: 1px solid #bbb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .lnr{
+        font-size: 42px;
+        overflow: auto;
+        color:#b2b2b2;
+    }
+}
+.img:hover { 
+    .lnr {
+      color: #f02373;
+    }
+  }
+.sectiontitle{
+    text-align: center;
+}
+
+.small{
+    font-size: 12px!important;
+}
+
+.mat-card{
+    box-shadow: none!important;
+    padding:0!important;
+    border-top:1px solid #fdcedd;
+}

@@ -1,0 +1,100 @@
+<mat-toolbar>
+  <div fxLayout="column" fxLayoutWrap="wrap" fxLayoutAlign="space-around">
+    <div class="pl-1 pr-1 title">
+      {{'FORM_TITLE1' | translate}}
+    </div>
+    <div class="pl-1 pr-1 subtitle">
+      {{'FORM_SUBTITLE2' | translate}}
+    </div>
+  </div>
+</mat-toolbar>
+
+<form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #selectionForm="ngForm">
+  <div fxLayout="column" fxLayoutWrap="wrap" fxLayoutAlign="space-around" class="pt-1 pb-1">
+    <div class="pl-1 pr-1">
+      <mat-form-field style="width:100%">
+        <mat-select placeholder="{{'SELECTION_COMPANY' | translate}}" formControlName="companyname">
+          <mat-option *ngFor="let company of companies; let i = index" (click)="onSelectionChange(company)" [value]="company.name">
+            {{ company.name }}
+          </mat-option>
+        </mat-select>
+        <span matPrefix>
+          <span class="lnr lnr-briefcase pr-1"></span>
+        </span>
+        <span matSuffix>
+          <span matTooltip="{{ 'SELECTION_COMPANY_TIP' | translate }}" class="lnr lnr-question-circle"></span>
+        </span>
+      </mat-form-field>
+      <small *ngIf="form.controls['companyname'].hasError('required') && form.controls['companyname'].touched" class="mat-text-warn">{{'SELECTION_COMPANY_ERROR1' | translate}}</small>
+    </div>
+    <div *ngIf="positions" class="pl-1 pr-1">
+      <mat-form-field style="width:100%">
+        <mat-select placeholder="{{'SELECTION_POSITION' | translate}}" formControlName="position">
+          <mat-option *ngFor="let position of positions;let i = index" (click)="onViewChange('position')" [value]="position.name">
+            {{ position.name }}
+          </mat-option>
+        </mat-select>
+        <span matPrefix>
+          <span class="lnr lnr-license pr-1"></span>
+        </span>
+        <span matSuffix>
+          <span matTooltip="{{ 'SELECTION_POSITION_TIP' | translate }}" class="lnr lnr-question-circle"></span>
+        </span>
+      </mat-form-field>
+      <small *ngIf="form.controls['position'].hasError('required') && form.controls['position'].touched" class="mat-text-warn">{{'SELECTION_POSITION_ERROR1' | translate}}</small>
+    </div>
+
+    <div *ngIf="isTimeView" class="pl-1 pr-1">
+      <app-time></app-time>
+    </div>
+    <div *ngIf="isInterestsView" class="pl-1 pr-1">
+      <mat-form-field style="width:100%">
+        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="10" formControlName="interests" required
+          placeholder="{{'SELECTION_INTERESTS' | translate}}"></textarea>
+        <span matPrefix>
+          <span class="lnr lnr-pencil pr-1"></span>
+        </span>
+        <span matSuffix>
+          <span matTooltip="{{ 'SELECTION_INTERESTS_TIP' | translate }}" class="lnr lnr-question-circle"></span>
+        </span>
+      </mat-form-field>
+      <small *ngIf="form.controls['interests'].hasError('required') && form.controls['interests'].touched" class="mat-text-warn">{{'SELECTION_INTERESTS_ERROR1' | translate}}</small>
+      <small *ngIf="form.controls['interests'].hasError('minlength') && form.controls['interests'].touched" class="mat-text-warn">{{'SELECTION_INTERESTS_ERROR2' | translate}}</small>
+      <small *ngIf="form.controls['interests'].hasError('maxlength') && form.controls['interests'].touched" class="mat-text-warn">{{'SELECTION_INTERESTS_ERROR3' | translate}}</small>
+
+    </div>
+    <div *ngIf="isInterestsView" fxLayout="column" class="pl-1 pr-1">
+      <div class="pb-1">
+          <span class="lnr lnr-graduation-hat"></span>
+          <label class="text-secondary">{{'SELECTION_INTERN' | translate}}</label>
+          <span matTooltip="{{ 'SELECTION_INTERN_TIP' | translate }}" class="lnr lnr-question-circle"></span>
+      </div>
+      
+      <mat-radio-group (click)="onViewChange('interests')" formControlName="isintern">
+        <mat-radio-button classs="pr-1" value="1">{{ 'YES' | translate }}</mat-radio-button>
+        <mat-radio-button value="0">{{ 'NO' | translate }}</mat-radio-button>
+      </mat-radio-group>
+      <small *ngIf="form.controls['interests'].hasError('required') && form.controls['interests'].touched" class="mat-text-warn">{{'SELECTION_INTERN_ERROR1' | translate}}</small>
+    </div>
+
+    <div *ngIf="isMotivationsView" class="pt-1 pl-1 pr-1">
+      <mat-form-field style="width:100%">
+        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="10" formControlName="motivations" required
+          placeholder="{{'SELECTION_MOTIVATIONS' | translate}}"></textarea>
+        <span matPrefix>
+          <span class="lnr lnr-pencil pr-1"></span>
+        </span>
+        <span matSuffix>
+          <span matTooltip="{{ 'SELECTION_MOTIVATIONS_TIP' | translate }}" class="lnr lnr-question-circle"></span>
+        </span>
+      </mat-form-field>
+      <small *ngIf="form.controls['motivations'].hasError('required') && form.controls['motivations'].touched" class="mat-text-warn">{{'SELECTION_MOTIVATIONS_ERROR1' | translate}}</small>
+      <small *ngIf="form.controls['motivations'].hasError('minlength') && form.controls['motivations'].touched" class="mat-text-warn">{{'SELECTION_MOTIVATIONS_ERROR2' | translate}}</small>
+      <small *ngIf="form.controls['motivations'].hasError('maxlength') && form.controls['motivations'].touched" class="mat-text-warn">{{'SELECTION_MOTIVATIONS_ERROR3' | translate}}</small>
+    </div>
+    <div class="pt-1" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
+      <button fxFlex="50%" mat-button color="primary" class="btn-block" type="submit" [disabled]="!selectionForm.form.valid">{{'NEXT_BUTTON' | translate}}</button>
+    </div>
+  </div>
+
+</form>

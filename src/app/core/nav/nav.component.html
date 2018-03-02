@@ -1,0 +1,17 @@
+<header>
+    <nav>
+        <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="end center">
+            <a [matMenuTriggerFor]="lang">
+                <span class="lnr lnr-earth"></span>
+            </a>
+        </div>
+        <mat-menu #lang="matMenu" x-position="before" y-position="after">
+            <button mat-menu-item (click)="changeLanguage('en')" class="small">
+                {{'ENGLISH' | translate}}
+            </button>
+            <button mat-menu-item (click)="changeLanguage('de')" class="small">
+                {{'DEUTSCH' | translate}}
+            </button>
+        </mat-menu>
+    </nav>
+</header>

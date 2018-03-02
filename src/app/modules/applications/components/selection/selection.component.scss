@@ -1,0 +1,20 @@
+.mat-card{
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+.mat-toolbar{
+    background-color: #fdcedd;
+}
+.mat-toolbar-single-row {
+    height: 80px!important;
+}
+
+@media (max-width: 599px) {
+    .mat-toolbar-single-row {
+        height: 72px!important;
+    }
+}
+
+.lnr {
+    font-size: 18px;
+  }

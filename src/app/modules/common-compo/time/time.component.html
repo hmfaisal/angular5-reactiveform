@@ -1,0 +1,14 @@
+<mat-form-field style="width:100%">
+  <input matInput [min]="minMoment" (dateTimeChange)="onSubmitDate()" [(ngModel)]="selectedMoment" placeholder="{{'SELECTION_TIME' | translate}}"
+  [owlDateTimeTrigger]="reqSave" [owlDateTime]="reqSave" >
+  <owl-date-time  [startAt]="minMoment" [pickerMode]="'dialog'" #reqSave></owl-date-time>
+  <span matPrefix>
+    <span class="lnr lnr-clock pr-1"></span>
+  </span>
+  <span matSuffix>
+    <span matTooltip="{{ 'SELECTION_TIME_TIP' | translate }}" class="lnr lnr-question-circle"></span>
+  </span>
+</mat-form-field>
+<small *ngIf="reqSave.invalid && reqSave.errors.owlDateTimeMin">
+  {{'SELECTION_TIME_ERROR1' | translate}} {{minMoment| date: 'medium'}}
+</small>

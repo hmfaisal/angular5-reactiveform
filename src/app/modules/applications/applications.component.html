@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutWrap="wrap" class="pt-1" >
+  <div fxShow="false" fxShow.gt-sm fxFlex="15%"></div>
+  <div fxFlex="100%" fxFlex.gt-sm="70%">
+      <mat-card class="shadow-none">
+        <app-registration *ngIf="currentview == 'REGISTRATION'"></app-registration>
+        <app-selection *ngIf="currentview == 'SELECTION'"></app-selection>
+        <app-assessment *ngIf="currentview == 'ASSESSMENT'"></app-assessment>
+      </mat-card>
+  </div>
+  <div fxShow="false" fxShow.gt-sm fxFlex="15%"></div>
+</div>

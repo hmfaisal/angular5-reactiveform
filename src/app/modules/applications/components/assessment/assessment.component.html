@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <div fxLayout="column" fxLayoutWrap="wrap" fxLayoutAlign="space-around">
+    <div class="pl-1 pr-1 title">
+      {{'FORM_TITLE1' | translate}}
+    </div>
+    <div class="pl-1 pr-1 subtitle">
+      {{'FORM_SUBTITLE1' | translate}}
+    </div>
+  </div>
+</mat-toolbar>
+
+  <div fxLayout="column" fxLayoutWrap="wrap" fxLayoutAlign="space-around" class="pt-1 pb-1">
+    <p class="text-secondary pl-1 pr-1">{{'ASSESSMENT_TITLE' | translate}}</p>
+    <app-outdoorScale *ngIf="outdoorView"></app-outdoorScale>
+    <app-foodScale *ngIf="foodView"></app-foodScale>
+    <app-fashionScale *ngIf="fashionView"></app-fashionScale>
+    <app-laborScale *ngIf="laborView"></app-laborScale>
+    <app-practicalScale *ngIf="practicalView"></app-practicalScale>
+    <app-researchScale *ngIf="researchView"></app-researchScale>
+    <app-businessScale *ngIf="businessView"></app-businessScale>
+    <app-educationScale *ngIf="educationView"></app-educationScale>
+    <app-communicationScale *ngIf="communicationView"></app-communicationScale>
+
+    <div *ngIf="nextButtonView" class="pt-1" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
+      <button fxFlex="50%" mat-button color="primary" class="btn-block" (click)="onSubmit()">{{'NEXT_BUTTON' | translate}}</button>
+    </div>
+  </div>

@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <div fxLayout="column" fxLayoutWrap="wrap" fxLayoutAlign="space-around">
+    <div class="pl-1 pr-1 title">
+      {{'FORM_TITLE1' | translate}}
+    </div>
+    <div class="pl-1 pr-1 subtitle">
+      {{'FORM_SUBTITLE1' | translate}}
+    </div>
+  </div>
+</mat-toolbar>
+
+<form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+  <div fxLayout="column" fxLayoutWrap="wrap" fxLayoutAlign="space-around" class="pt-1 pb-1">
+    <div class="pl-1 pr-1">
+      <mat-form-field style="width: 100%">
+        <input matInput formControlName="firstname" required placeholder="{{'FORM_FIRSTNAME' | translate}}">
+        <span matPrefix>
+          <span class="lnr lnr-user pr-1"></span>
+        </span>
+      </mat-form-field>
+      <small *ngIf="form.controls['firstname'].hasError('required') && form.controls['firstname'].touched" class="mat-text-warn">{{'FIRSTNAME_ERROR1' | translate}}</small>
+    </div>
+    <div class="pl-1 pr-1">
+      <mat-form-field style="width: 100%">
+        <input matInput formControlName="lastname" required placeholder="{{'FORM_LASTNAME' | translate}}">
+        <span matPrefix>
+          <span class="lnr lnr-user pr-1"></span>
+        </span>
+      </mat-form-field>
+      <small *ngIf="form.controls['lastname'].hasError('required') && form.controls['lastname'].touched" class="mat-text-warn">{{'LASTNAME_ERROR1' | translate}}</small>
+    </div>
+    <div class="pl-1 pr-1">
+      <mat-form-field style="width: 100%">
+        <input matInput formControlName="email" required placeholder="{{'REGISTRATION_EMAIL' | translate}}">
+        <span matPrefix>
+          <span class="lnr lnr-envelope pr-1"></span>
+        </span>
+        <span matSuffix>
+          <span matTooltip="{{ 'FORM_EMAIL_TIP' | translate }}" class="lnr lnr-question-circle"></span>
+        </span>
+      </mat-form-field>
+      <small *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="mat-text-warn">{{'REGISTRATION_EMAIL_ERROR1' | translate}}</small>
+      <small *ngIf="form.controls['email'].errors?.email && form.controls['email'].touched" class="mat-text-warn">{{'REGISTRATION_EMAIL_ERROR2' | translate}}</small>
+    </div>
+    <div class="pl-1 pr-1">
+      <perfect-scrollbar style="max-height: 120px;" [config]="config">
+        <p class="text-primary">{{'AGGREEMENT_TEXT_1' | translate}}</p>
+        <p class="text-primary">{{'AGGREEMENT_TEXT_2' | translate}}</p>
+        <p class="text-secondary">{{'AGGREEMENT_TEXT_3' | translate}}</p>
+        <p class="text-secondary">{{'AGGREEMENT_TEXT_4' | translate}}</p>
+      </perfect-scrollbar>
+    </div>
+    <div class="pt-1" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="center center">
+        <button fxFlex="50%" mat-button color="primary" class="btn-block" type="submit" [disabled]="!registerForm.form.valid">{{'SAVE_BUTTON' | translate}}</button>
+    </div>
+  </div>
+  
+</form>

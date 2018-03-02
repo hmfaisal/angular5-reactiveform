@@ -1,0 +1,45 @@
+<form [formGroup]="practicalform">
+  <mat-card class="shadow-none">
+    <div fxLayout="row" fxLayoutWrap="wrap" class="pt-1 pb-1">
+      <div fxLayout="column" fxHide.lt-sm fxFlex="25%" fxLayoutAlign="center center">
+        <div class="img">
+          <span class="lnr lnr-bus"></span>
+        </div>
+        <div class="sectiontitle text-secondary pl-1 pr-1">
+          <span class="small">{{'PRACTICAL' | translate}}</span>
+        </div>
+      </div>
+      <div fxFlex.lt-sm="100%" fxFlex="75%">
+
+        <div fxLayout="column" class="pl-1 pr-1">
+          <div class="text-secondary">
+            <span fxShow="false" fxShow.lt-sm>{{'PRACTICAL' | translate}}</span>
+            <span fxHide.lt-sm>{{'ASSESSMENT_SCALE' | translate}}</span>
+          </div>
+          <mat-slider style="width:100%" formControlName="scale" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+            [tick-interval]="tickInterval" [(ngModel)]="scaleValue" [vertical]="vertical" (change)="triggerView($event)">
+          </mat-slider>
+          <small *ngIf="practicalform.controls['scale'].hasError('required') && practicalform.controls['scale'].touched" class="mat-text-warn">{{'SCALE_ERROR1' | translate}}</small>
+        </div>
+
+        <div *ngIf="isSkillsView" fxLayout="column" class="pl-1 pr-1">
+            <div class="text-secondary pb-1">
+              {{'ASSESSMENT_SKILL' | translate}}
+            </div>
+            <mat-checkbox fxFlex="50%" *ngFor="let data of skills" (click)="onViewChange('motivations')" (change)="onChange(data.name, $event)">{{data.name | translate}}</mat-checkbox>
+          </div>
+
+        <div *ngIf="isMotivationsView" class="pt-1 pl-1 pr-1">
+          <mat-form-field style="width:100%">
+            <textarea matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="motivations" placeholder="{{'ASSESSMENT_SCALE_MOTIVATION' | translate}}"></textarea>
+            <span matPrefix>
+              <span class="lnr lnr-pencil pr-1"></span>
+            </span>
+          </mat-form-field>
+          <small *ngIf="practicalform.controls['motivations'].hasError('maxlength') && practicalform.controls['motivations'].touched"
+            class="mat-text-warn">{{'ASSESSMENT_MOTIVATIONS_ERROR1' | translate}}</small>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</form>
