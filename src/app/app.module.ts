@@ -16,6 +16,7 @@ import { CoreModule } from './core/core.module';
 
 import {
   DataService,
+  SelectionService
 } from './services';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -46,6 +47,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     DataService,
+    SelectionService,
     {
       provide: APP_CONFIG, 
       useValue: AppConfig
